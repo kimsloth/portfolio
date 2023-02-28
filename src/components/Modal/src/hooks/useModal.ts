@@ -36,7 +36,7 @@ export function useModal(): UseModalReturnType {
 
   function register(modalMethod: ModalMethods, uuid: string) {
     if (!getCurrentInstance()) {
-      throw new Error('useModal() can only be used inside setup() or functional components!');
+      throw new Error('useModal() can only be used inside jobLog() or functional components!');
     }
     uid.value = uuid;
     isProdMode() &&

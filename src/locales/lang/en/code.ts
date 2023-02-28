@@ -1,0 +1,35 @@
+export default {
+  robot: {
+    workState: {
+      name: 'Work Status',
+      '1020401': 'waiting',
+      '1020402': 'on mission',
+      '1020403': 'docking',
+      '1020404': 'pausing',
+      '1020405': 'cancelling',
+      '1020406': 'error',
+      '1020407': 'charging',
+      '1020408': 'docking out',
+      '1020409': 'awaiting mission',
+      '1020410': 'mapping',
+      '1020411': 'not following',
+      '1020412': 'battery warning',
+    },
+    mode: {
+      name: 'Robot Mode',
+      '1020501': 'Manual Mode',
+      '1020502': 'Auto Mode',
+    },
+    type: {
+      name: 'Robot Type',
+      '2010000': 'Undetermined',
+      '2010007': 'SR1',
+      '2010001': 'SR3',
+      '2010002': 'SR5',
+      '2010003': 'SR7',
+      '2010004': 'IM0',
+      '2010005': 'IM1',
+      '2010006': 'IM3',
+    },
+  },
+};

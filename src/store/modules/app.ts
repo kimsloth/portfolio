@@ -102,7 +102,7 @@ export const useAppStore = defineStore({
   },
 });
 
-// Need to be used outside the setup
+// Need to be used outside the jobLog
 export function useAppStoreWithOut() {
   return useAppStore(store);
 }

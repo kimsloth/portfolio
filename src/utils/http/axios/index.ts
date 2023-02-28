@@ -1,6 +1,8 @@
 // axios配置  可自行根据项目进行更改，只需更改该文件即可，其他文件可以不动
 // The axios configuration can be changed according to the project, just change the file, other files can be left unchanged
 
+import axios from 'axios';
+
 import type { AxiosResponse } from 'axios';
 import { clone } from 'lodash-es';
 import type { RequestOptions, Result } from '/#/axios';
@@ -9,16 +11,21 @@ import { VAxios } from './Axios';
 import { checkStatus } from './checkStatus';
 import { useGlobSetting } from '/@/hooks/setting';
 import { useMessage } from '/@/hooks/web/useMessage';
-import { RequestEnum, ResultEnum, ContentTypeEnum } from '/@/enums/httpEnum';
+import { ContentTypeEnum, RequestEnum, ResultEnum } from '/@/enums/httpEnum';
 import { isString, isUnDef, isNull, isEmpty } from '/@/utils/is';
 import { getToken } from '/@/utils/auth';
-import { setObjToUrlParams, deepMerge } from '/@/utils';
+import { deepMerge, setObjToUrlParams } from '/@/utils';
 import { useErrorLogStoreWithOut } from '/@/store/modules/errorLog';
 import { useI18n } from '/@/hooks/web/useI18n';
-import { joinTimestamp, formatRequestDate } from './helper';
+import { formatRequestDate, joinTimestamp } from './helper';
 import { useUserStoreWithOut } from '/@/store/modules/user';
 import { AxiosRetry } from '/@/utils/http/axios/axiosRetry';
-import axios from 'axios';
+import {
+  JsonConvert,
+  OperationMode,
+  PropertyConvertingMode,
+  ValueCheckingMode,
+} from 'json2typescript';
 
 const globSetting = useGlobSetting();
 const urlPrefix = globSetting.urlPrefix;
@@ -219,6 +226,77 @@ const transform: AxiosTransform = {
       // @ts-ignore
       retryRequest.retry(axiosInstance, error);
     return Promise.reject(error);
+  },
+};
+
+export const getJsonConvert = (options?: {
+  mapUndefinedToNull?: boolean;
+  operationMode?: OperationMode;
+  ignorePrimitiveChecks?: boolean;
+  propertyConvertingMode?: PropertyConvertingMode;
+  valueCheckingMode?: ValueCheckingMode;
+}) => {
+  const jsonConvert: JsonConvert = new JsonConvert();
+  /*
+    Map undefined to null
+      - default false
+   */
+  jsonConvert.mapUndefinedToNull = options?.mapUndefinedToNull ?? true;
+  /*
+    JsonConvert class instance should operate.
+      - default OperationMode.ENABLE
+   */
+  jsonConvert.operationMode = options?.operationMode ?? OperationMode.ENABLE;
+  /*
+    Ignore primitive checks,
+      - default false : don't allow assigning number to string etc.
+   */
+  jsonConvert.ignorePrimitiveChecks = options?.ignorePrimitiveChecks ?? false;
+  /*
+    Property converting mode
+      - default PropertyConvertingMode.MAP_NULLABLE.
+   */
+  jsonConvert.propertyConvertingMode =
+    options?.propertyConvertingMode ?? PropertyConvertingMode.IGNORE_NULLABLE;
+  /*
+    Value checking mode
+      - default ValueCheckingMode.ALLOW_OBJECT_NULL
+   */
+  jsonConvert.valueCheckingMode = options?.valueCheckingMode ?? ValueCheckingMode.ALLOW_OBJECT_NULL;
+  return jsonConvert;
+};
+
+export const jsonParsing = {
+  jsonConvert: getJsonConvert(),
+  serialize<T extends object, U extends object = {}>(
+    data: T | T[],
+    classReference?: { new (): U },
+  ): any | any[] {
+    return this.jsonConvert.serialize(data, classReference);
+  },
+  serializeObject<T extends object, U extends object = {}>(
+    data: T,
+    classReference?: { new (): U },
+  ): any {
+    return this.jsonConvert.serializeObject(data, classReference);
+  },
+  serializeArray<T extends object, U extends object = {}>(
+    data: T[],
+    classReference?: { new (): U },
+  ): any[] {
+    return this.jsonConvert.serializeArray(data, classReference);
+  },
+  deserialize<T extends object>(
+    json: object | object[],
+    classReference?: { new (): T } | null,
+  ): T | T[] {
+    return this.jsonConvert.deserialize(json, classReference);
+  },
+  deserializeObject<T extends object>(jsonObject: any, classReference?: { new (): T } | null): T {
+    return this.jsonConvert.deserializeObject(jsonObject, classReference);
+  },
+  deserializeArray<T extends object>(jsonArray: any[], classReference?: { new (): T } | null): T[] {
+    return this.jsonConvert.deserializeArray(jsonArray, classReference);
   },
 };
 

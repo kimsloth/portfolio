@@ -213,14 +213,14 @@ const linkRoute = {
   component: 'LAYOUT',
   meta: {
     icon: 'ion:tv-outline',
-    title: 'routes.demo.iframe.frame',
+    title: 'routes.demo.robot.frame',
   },
   children: [
     {
       path: 'doc',
       name: 'Doc',
       meta: {
-        title: 'routes.demo.iframe.doc',
+        title: 'routes.demo.robot.doc',
         frameSrc: 'https://vvbin.cn/doc-next/',
       },
     },
@@ -229,7 +229,7 @@ const linkRoute = {
       name: 'DocExternal',
       component: 'LAYOUT',
       meta: {
-        title: 'routes.demo.iframe.docExternal',
+        title: 'routes.demo.robot.docExternal',
       },
     },
   ],

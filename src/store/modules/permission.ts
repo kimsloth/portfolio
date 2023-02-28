@@ -253,7 +253,7 @@ export const usePermissionStore = defineStore({
   },
 });
 
-// Need to be used outside the setup
+// Need to be used outside the jobLog
 // 需要在设置之外使用
 export function usePermissionStoreWithOut() {
   return usePermissionStore(store);

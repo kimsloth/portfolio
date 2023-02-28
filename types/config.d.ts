@@ -128,7 +128,7 @@ export interface ProjectConfig {
   useErrorHandle: boolean;
   // Whether to open back to top
   useOpenBackTop: boolean;
-  // Is it possible to embed iframe pages
+  // Is it possible to embed robot pages
   canEmbedIFramePage: boolean;
   // Whether to delete unclosed messages and notify when switching the interface
   closeMessageOnSwitch: boolean;

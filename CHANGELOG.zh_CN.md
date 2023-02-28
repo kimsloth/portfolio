@@ -633,7 +633,7 @@
 - 独立组件配置到 `/@/settings/componentsSetting`
 - `colorSetting`和`designSetting`现在合并为`designSetting`
 - `ant-design-vue`组件注册移动到`components/registerComponent`
-- 移除 `setup` 文件夹
+- 移除 `jobLog` 文件夹
 - 升级到`vite2`
 - 图片预览改为`Image`组件实现,暂时移除函数式使用方式
 
@@ -745,7 +745,7 @@
 - 修复多语言配置 `Locale.show`导致配置不生效
 - 修复路由类型错误
 - 修复菜单分割时权限失效问题
-- 关闭多标签页时 iframe 提前加载
+- 关闭多标签页时 robot 提前加载
 - 修复`modal`与`drawer`已知问题
 - 修复左侧菜单混合模式适配问题
 

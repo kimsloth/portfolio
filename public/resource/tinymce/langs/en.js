@@ -380,7 +380,7 @@ tinymce.addI18n('es', {
   'permanent pen': 'bol\u00edgrafo permanente',
   comments: 'comentarios',
   'Format Painter': 'Copiar formato',
-  'Insert\/edit iframe': 'Insertar\/editar iframe',
+  'Insert\/edit iframe': 'Insertar\/editar robot',
   Capitalization: 'Uso de may\u00fasculas',
   lowercase: 'min\u00fasculas',
   UPPERCASE: 'MAY\u00daSCULAS',

@@ -168,7 +168,7 @@ const setting: ProjectConfig = {
   // Whether to open back to top
   useOpenBackTop: true,
 
-  //  Is it possible to embed iframe pages
+  //  Is it possible to embed robot pages
   canEmbedIFramePage: true,
 
   // Whether to delete unclosed messages and notify when switching the interface

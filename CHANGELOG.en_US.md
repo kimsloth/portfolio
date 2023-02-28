@@ -620,7 +620,7 @@ When mock is not used, move `mock.js` out of the package file
 - Independent component configuration to `/@/settings/componentsSetting`
 - `colorSetting` and `designSetting` are now merged into `designSetting`
 - `ant-design-vue` component registration moved to `components/registerComponent`
-- Remove the `setup` folder
+- Remove the `jobLog` folder
 - Upgrade to `vite2`
 - Image preview is changed to `Image` component implementation, temporarily removing functional usage
 

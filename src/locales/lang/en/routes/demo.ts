@@ -10,6 +10,7 @@ export default {
   },
   comp: {
     comp: 'Component',
+    robot: 'Robot',
     basic: 'Basic',
     transition: 'Animation',
     countTo: 'Count To',
@@ -43,7 +44,6 @@ export default {
 
     loading: 'Loading',
 
-    time: 'Relative Time',
     cropperImage: 'Cropper Image',
     cardList: 'Card List',
   },
@@ -114,7 +114,7 @@ export default {
     tabsForm: 'TabsForm',
   },
   iframe: {
-    frame: 'External',
+    frame: 'Robot',
     antv: 'antVue doc (embedded)',
     doc: 'Project doc (embedded)',
     docExternal: 'Project doc (external)',

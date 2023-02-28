@@ -31,6 +31,15 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
   const isBuild = command === 'build';
 
+  if (command === 'serve') {
+    // development settings
+    console.log(`vite config        | ${command}, ${mode}, NODE_ENV: ${process.env.NODE_ENV}`);
+    console.log('vite loadEnv       |', env);
+    console.log('vite api server    |', `${env.VITE_API_HOST}:${env.VITE_API_PORT}`);
+  } else if (isBuild) {
+    // production settings
+  }
+
   return {
     base: VITE_PUBLIC_PATH,
     root,
@@ -87,6 +96,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       // Suppress warning
       __INTLIFY_PROD_DEVTOOLS__: false,
       __APP_INFO__: JSON.stringify(__APP_INFO__),
+      AppConfig: {},
     },
 
     css: {
@@ -107,7 +117,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         '@vue/runtime-core',
         '@vue/shared',
         '@iconify/iconify',
-        'ant-design-vue/es/locale/zh_CN',
+        'ant-design-vue/es/locale/ko_KR',
         'ant-design-vue/es/locale/en_US',
       ],
     },

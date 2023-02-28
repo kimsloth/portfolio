@@ -171,7 +171,7 @@ export const useUserStore = defineStore({
   },
 });
 
-// Need to be used outside the setup
+// Need to be used outside the jobLog
 export function useUserStoreWithOut() {
   return useUserStore(store);
 }
